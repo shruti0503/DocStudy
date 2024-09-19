@@ -1,13 +1,13 @@
+import Dashboard from "@/components/Dashboard"
 
-
- const Dashboard=()=>{
+ const Dash=()=>{
 
     return(
-        <div>
-            Dashbpard
-        </div>
+        <Dashboard>
+           
+        </Dashboard>
     )
 
 }
 
-export default Dashboard
+export default Dash
