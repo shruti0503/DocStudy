@@ -10,6 +10,7 @@ const Dashboard=()=>{
     const [files, setFiles]=useState([{id:"1", name:"new", uploadStatus:"DONE",createdAt:""}]);
     const [isLoading, setIsLoading]=useState<Boolean>(false)
     const [currentlyDeletingFile, setCurrentlyDeletingFile]=useState('2')
+    //@ts-ignore
     const deleteFile=({id})=>{
         console.log(id)
 
@@ -17,8 +18,10 @@ const Dashboard=()=>{
 
     return(
         <main className="mx-auto max-w-7xl md:p-10">
-            <div>
-                <h1>My Files</h1>
+             <div className='mt-8 flex flex-col items-start justify-between gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:gap-0'>
+                <h1 className='mb-3 font-bold text-5xl text-gray-900'>
+                    My Files
+                </h1>
             </div>
             {
                 files && files.length !==0 ?(
