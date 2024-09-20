@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import { UploadButton } from "./UploadButton";
+import  UploadButton  from "./UploadButton";
 import Skeleton from "react-loading-skeleton";
 import { Ghost, Loader2, MessageSquare, Plus, Trash } from "lucide-react";
 import Link from "next/link";
