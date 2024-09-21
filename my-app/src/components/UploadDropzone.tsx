@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Progress } from "./ui/progress";
 import { useUploadThing } from "@/lib/uploadthing";
+import { useToast } from "@/hooks/use-toast";
 
 const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
   const router = useRouter();
@@ -12,17 +13,44 @@ const UploadDropzone = ({ isSubscribed }: { isSubscribed: boolean }) => {
   const [files, setFiles] = useState<any[]>([]);
   const [uploadProgress, setUploadProgress] = useState<number>(0);  
   const {startUpload}=useUploadThing('pdfUploader')
+  const {toast}=useToast();
   //@ts-ignore
   const onDrop = useCallback(async(acceptedFiles) => {
     try{
         const res= await startUpload(acceptedFiles);
+        console.log("res on uploading file", res)
         if(!res){
-            
+            return toast({
+                title: "something went wrong",
+                description:"Please try again later",
+                variant:"destructive",
+            })
+
         }
+        const [fileResponse]=res;
+        console.log("fileResponse",fileResponse)
+        const  key=fileResponse?.key;
+        if(!key){
+            return toast({
+                title:"something went wrong",
+                description:"Please try again later",
+                variant:"destructive"
+            })
+        }
+        //pooling approach to check if its is actually in database
+        // keep pooling [To do]
+        // 
+
 
     }
     catch(err){
         console.log("err", err)
+        return toast({
+            title: "something went wrong",
+            description:"Please try again later",
+            variant:"destructive",
+        })
+        
     }
     console.log("accepted Files", acceptedFiles);
     setFiles(prevFiles => [...prevFiles, ...acceptedFiles]);
