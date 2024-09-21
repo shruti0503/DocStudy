@@ -1,12 +1,17 @@
 import PdfRenderer from "@/components/PdfRenderer";
 import ChatWrapper from "@/components/ChatWrapper";
 
+interface PageProps {
+  params: {
+    fileid: string
+  }
+}
 
 const File=()=>{
     const  file={
         name:"file",
         id:"1",
-        url:"abcvdef",
+        url:"https://utfs.io/f/ZgFHedT4za3sPAOYHz9dGV0AyWtRznDJHblvmw53hPedFQY9",
     }
     const plan={
         isSubscribed:true
